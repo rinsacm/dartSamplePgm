@@ -4,7 +4,7 @@ class TechLearnersAndMentors{
   var interests=[];
   var timeFrom;
   var timeTo;
-  //constructor
+  
   TechLearnersAndMentors(String name){
     this.name=name;
   }
@@ -23,7 +23,7 @@ class TechLearnersAndMentors{
       this.timeTo=to;
     }
   }
-  List getMentor(var stack,var timeBeg,var timeEnd,var ls)
+  void getMentor(var stack,var timeBeg,var timeEnd,var ls)
   {
     List mentors=[];
     for(int i=0;i<ls.length;i++)
@@ -41,21 +41,29 @@ class TechLearnersAndMentors{
         }
       }
     }
-      
-    return mentors;
+    if(mentors.length>0)
+      print(mentors);
+    else
+      print("No available mentors.");
   }
 }
 main(){
   var ls=[];
   var obj=new TechLearnersAndMentors("Joel");
+
   obj.setMentorOrLearner("Mentor");
   print(obj.role);
+
   obj.addStacks("java");
+  obj.addStacks("python");
   print(obj.interests);
+
   obj.setAvailableTime(new DateTime(2020,3,10,12),new DateTime(2020,3,20,12));
   print(obj.timeFrom);
   print(obj.timeTo);
+
   ls.add(obj);
-  print(obj.getMentor("java",DateTime(2020,3,10,13),new DateTime(2020,3,20,12),ls));
+
+  obj.getMentor("java",DateTime(2020,3,10,13),new DateTime(2020,3,20,12),ls);
   
 }
